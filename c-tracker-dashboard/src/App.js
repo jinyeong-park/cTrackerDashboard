@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { MenuItem, FormControl, Select } from '@material-ui/core';
+import { MenuItem, FormControl, Select, Card, CardContent} from '@material-ui/core';
 import './App.css';
+import InfoBox from './InfoBox.js';
+import Map from './Map.js';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
+  const [countryInfo, setCountryInfo] = useState({});
+
 
   // STATE = how to write a variable in react
+
+  // useEffect : when app.js loaded, render it once
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      })
+  }, []);
 
   useEffect(() => {
     // useEffect : similar to componentDidMount
@@ -26,19 +39,31 @@ function App() {
     getCountriesData();
   }, []);
 
-  const onCountryChange = (event) => {
+
+  const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-
-    console.log('HELLO COUNTRYCODE', countryCode)
-
     setCountry(countryCode);
+
+    const url = countryCode === 'worldwide'
+    ? "https://disease.sh/v3/covid-19/all"
+    : "https://disease.sh/v3/covid-19/${countryCode}"
+
+    await fetch(url)
+    .then((response) => response.json)
+    .then((data) => {
+      setCountry(countryCode);
+    })
   }
 
-
-
   return (
-    <div className="App">
+
+    <div className="app">
+        {/* // Big Left Container */}
+      <div className="app__left">
+
+        {/* Header */}
       <div className="app__header">
+          {/* Title */}
         <h1> Covid tracker dashboard</h1>
         <FormControl className="app__dropdown">
           <Select variant="outlined" value={country} onChange={onCountryChange}>
@@ -46,24 +71,36 @@ function App() {
             { countries.map(country => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
-            {/* <MenuItem value="worldwide">Worldwide</MenuItem>
-            <MenuItem value="worldwide">Option2</MenuItem>
-            <MenuItem value="worldwide">Option3</MenuItem>
-            <MenuItem value="worldwide">Option4</MenuItem> */}
           </Select>
         </FormControl>
       </div>
-      {/* Header */}
-      {/* Title */}ㄴ
 
-      {/* InfoBox */}
-      {/* InfoBox */}
-      {/* InfoBox */}
-
-      {/* Table */}
-      {/* Graph */}
+      <div className="app__stats">
+        <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
+        <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>
+        <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
+        {/* InfoBox title="Coronavirus cases*/}
+        {/* InfoBox title="Coronavirus recoveries*/}
+        {/* InfoBox */}
+      </div>
 
       {/* Map */}
+         <Map />
+      </div>
+
+      {/* // Big Right Container */}
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live Cases by Country</h3>
+          <h3>Worldwide new cases</h3>
+            {/* Table */}
+        </CardContent>
+
+
+      {/* Graph */}
+
+      </Card>
+
     </div>
   );
 }

@@ -2,11 +2,36 @@
   margin: 0;
 }
 
+body {
+  background-color: #f5f6fa;
+}
+
+.app {
+  /* make children(app__left & app__right) make it horizontal */
+  display: flex;  /* default flex-direction: row; */
+  justify-content: space-evenly;
+
+}
+
 .app__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
 
+.app__left {
+  flex: 0.9;      /* use only 90% of width */
+}
 
+.app__stats {
+  display: flex;  /* make it horizontal */
+  justify-content: space-between
+}
+
+/* responsive */
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+  }
 }
