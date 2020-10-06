@@ -5,7 +5,7 @@ function Map() {
 
   return (
     <div className="map">
-      <h1>I am a map</h1>
+      <h1>Map component</h1>
     </div>
 
   );

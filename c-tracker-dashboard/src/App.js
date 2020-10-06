@@ -3,11 +3,13 @@ import { MenuItem, FormControl, Select, Card, CardContent} from '@material-ui/co
 import './App.css';
 import InfoBox from './InfoBox.js';
 import Map from './Map.js';
+import Table from './Table.js';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
 
   // STATE = how to write a variable in react
@@ -28,11 +30,13 @@ function App() {
       await fetch ("https://disease.sh/v3/covid-19/countries")
       .then((response) => response.json())
       .then((data) => {
+        console.log('countries data >>>', data[0])
         const countries = data.map((country) => (
           {
             name: country.country,  // United States, United Kingdom
             value: country.countryInfo.iso2 // US, UK
           }));
+          setTableData(data);
           setCountries(countries);
       });
     };
@@ -92,8 +96,11 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
-          <h3>Worldwide new cases</h3>
             {/* Table */}
+          <Table countries={tableData}/>
+          <h3>Worldwide new cases</h3>
+
+
         </CardContent>
 
 
