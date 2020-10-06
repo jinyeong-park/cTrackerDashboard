@@ -4,6 +4,7 @@ import './App.css';
 import InfoBox from './InfoBox.js';
 import Map from './Map.js';
 import Table from './Table.js';
+import { sortData } from "./util";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -36,8 +37,11 @@ function App() {
             name: country.country,  // United States, United Kingdom
             value: country.countryInfo.iso2 // US, UK
           }));
-          setTableData(data);
-          setCountries(countries);
+
+          // using util helper fn to sort
+          const sortedData = sortData(data)
+          setTableData(sortedData);
+          setCountries(sortedData);
       });
     };
     getCountriesData();
