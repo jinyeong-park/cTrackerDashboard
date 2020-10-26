@@ -9,6 +9,7 @@ import LineGraph from './LineGraph.js';
 import "leaflet/dist/leaflet.css";
 
 function App() {
+  // STATE - short term memory / how to write a variable in react
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
@@ -17,10 +18,7 @@ function App() {
   const [mapZoom, setMapZoom] = useState(3);
 
 
-
-  // STATE = how to write a variable in react
-
-  // useEffect : when app.js loaded, render it once
+  // useEffect : componentDidMount / when app.js loaded, render it once
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then(response => response.json())
@@ -30,13 +28,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // useEffect : similar to componentDidMount
+    // getting countries api info and organize data and set to countries
     // async -> send a request, wait for it.do something with info
     const getCountriesData = async () => {
       await fetch ("https://disease.sh/v3/covid-19/countries")
       .then((response) => response.json())
       .then((data) => {
         console.log('countries data >>>', data[0])
+        console.log('data[0].country >>>', data[0].country)
         const countries = data.map((country) => (
           {
             name: country.country,  // United States, United Kingdom
@@ -44,7 +43,7 @@ function App() {
           }));
 
           // using util helper fn to sort
-          const sortedData = sortData(data)
+          const sortedData = sortData(countries)
           setTableData(sortedData);
           setCountries(sortedData);
       });
@@ -59,7 +58,7 @@ function App() {
 
     const url = countryCode === 'worldwide'
     ? "https://disease.sh/v3/covid-19/all"
-    : "https://disease.sh/v3/covid-19/${countryCode}"
+    : `https://disease.sh/v3/covid-19/${countryCode}`
 
     await fetch(url)
     .then((response) => response.json)
@@ -80,9 +79,10 @@ function App() {
         <FormControl className="app__dropdown">
           <Select variant="outlined" value={country} onChange={onCountryChange}>
             <MenuItem value="worldwide">Worldwide</MenuItem>
-            { countries.map(country => (
+            { countries.map((country) => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
+
           </Select>
         </FormControl>
       </div>
@@ -98,7 +98,7 @@ function App() {
           total={countryInfo.recovered}/>
         <InfoBox
           title="Deaths"
-          cases={countryInfo.todayDeatths}
+          cases={countryInfo.todayDeaths}
           total={countryInfo.deaths}/>
       </div>
 
