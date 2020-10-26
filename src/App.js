@@ -42,10 +42,11 @@ function App() {
             value: country.countryInfo.iso2 // US, UK
           }));
 
+          setCountries(countries);
           // using util helper fn to sort
-          const sortedData = sortData(countries)
+          const sortedData = sortData(data)
           setTableData(sortedData);
-          setCountries(sortedData);
+
       });
     };
     getCountriesData();
