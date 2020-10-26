@@ -4,7 +4,7 @@ import './styles/App.css';
 import InfoBox from './InfoBox.js';
 import Map from './Map.js';
 import Table from './Table.js';
-import { sortData } from "./util";
+import { sortData, prettyPrintStat } from "./util";
 import LineGraph from './LineGraph.js';
 import "leaflet/dist/leaflet.css";
 
@@ -96,15 +96,15 @@ function App() {
       <div className="app__stats">
         <InfoBox
           title="Coronavirus Cases"
-          cases={countryInfo.todayCases}
+          cases={prettyPrintStat(countryInfo.todayCases)}
           total={countryInfo.cases} />
         <InfoBox
           title="Recovered"
-          cases={countryInfo.todayRecovered}
+          cases={prettyPrintStat(countryInfo.todayRecovered)}
           total={countryInfo.recovered}/>
         <InfoBox
           title="Deaths"
-          cases={countryInfo.todayDeaths}
+          cases={prettyPrintStat(countryInfo.todayDeaths)}
           total={countryInfo.deaths}/>
       </div>
 
