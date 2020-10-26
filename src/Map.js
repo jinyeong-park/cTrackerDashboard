@@ -13,6 +13,7 @@ function Map({center, zoom}) {
           attribution='&cppy; <a hrref="http://osm/org/copyright">
           OpenStreettMap</a> contributors'
         />
+        {/* Loop through countries and draw circles on the screen */}
       </LeafletMap>
     </div>
 

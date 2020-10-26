@@ -14,8 +14,9 @@ function App() {
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
-  const [mapCenter, setMapCenter] = useState({ lat: 34.800746, lng: -40.4796 })  // center of the world map pacific ocean
+  const [mapCenter, setMapCenter] = useState({ lat: 34.800746, lng: -40.4796 })  // center of the world map
   const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
 
   // useEffect : componentDidMount / when app.js loaded, render it once
@@ -45,6 +46,7 @@ function App() {
           setCountries(countries);
           // using util helper fn to sort
           const sortedData = sortData(data)
+          setMapCountries(data);
           setTableData(sortedData);
 
       });
@@ -59,14 +61,17 @@ function App() {
 
     const url = countryCode === 'worldwide'
     ? "https://disease.sh/v3/covid-19/all"
-    : `https://disease.sh/v3/covid-19/${countryCode}`
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`
 
     await fetch(url)
-    .then((response) => response.json)
+    .then((response) => response.json())
     .then((data) => {
       setCountry(countryCode);
-    })
-  }
+      setCountryInfo(data);
+      setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+      setMapZoom(4);
+    });
+  };
 
   return (
 
@@ -104,6 +109,7 @@ function App() {
       </div>
 
          <Map
+          countries={mapCountries}
           center={mapCenter}
           zoom={mapZoom}/>
       </div>
