@@ -1,5 +1,6 @@
 # cTrackerDashboard
 
-![Screen shot](corona virus tracker.png)
+![cTrackerDashboard](/corona virus tracker.png)
+Format: ![Alt Text](url)
 
 ## Features
