@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cTrackerDashboard/static/css/main.0ed6ee53.chunk.css",
+    "main.js": "/cTrackerDashboard/static/js/main.857da817.chunk.js",
+    "main.js.map": "/cTrackerDashboard/static/js/main.857da817.chunk.js.map",
+    "runtime-main.js": "/cTrackerDashboard/static/js/runtime-main.25d89562.js",
+    "runtime-main.js.map": "/cTrackerDashboard/static/js/runtime-main.25d89562.js.map",
+    "static/css/2.a4567992.chunk.css": "/cTrackerDashboard/static/css/2.a4567992.chunk.css",
+    "static/js/2.e864b44a.chunk.js": "/cTrackerDashboard/static/js/2.e864b44a.chunk.js",
+    "static/js/2.e864b44a.chunk.js.map": "/cTrackerDashboard/static/js/2.e864b44a.chunk.js.map",
+    "index.html": "/cTrackerDashboard/index.html",
+    "precache-manifest.cf6eea14856bfb2b1039fb9aac49ad57.js": "/cTrackerDashboard/precache-manifest.cf6eea14856bfb2b1039fb9aac49ad57.js",
+    "service-worker.js": "/cTrackerDashboard/service-worker.js",
+    "static/css/2.a4567992.chunk.css.map": "/cTrackerDashboard/static/css/2.a4567992.chunk.css.map",
+    "static/css/main.0ed6ee53.chunk.css.map": "/cTrackerDashboard/static/css/main.0ed6ee53.chunk.css.map",
+    "static/js/2.e864b44a.chunk.js.LICENSE.txt": "/cTrackerDashboard/static/js/2.e864b44a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.25d89562.js",
+    "static/css/2.a4567992.chunk.css",
+    "static/js/2.e864b44a.chunk.js",
+    "static/css/main.0ed6ee53.chunk.css",
+    "static/js/main.857da817.chunk.js"
+  ]
+}
