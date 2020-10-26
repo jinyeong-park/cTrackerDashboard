@@ -1,10 +1,12 @@
 .table {
   margin-top: 20px;
   /* make scroll/set height with table  */
-  overflow: scroll;
+  /* overflow: scroll; */
+  overflow: hidden;
   height: 400px;
-  /* every even num -> gray */
+  /* every even num font color -> gray */
   color: #6a5d5d;
+  background-color: white;
 }
 
 .table tr {
@@ -14,9 +16,12 @@
 
 .table td {
   padding: 0.5rem;
+  border: none;
 }
 
 /* every odd num -> white */
 .table tr:nth-of-type(odd) {
   background-color: #f3f2f8;
 }
+
+

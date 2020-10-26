@@ -17,6 +17,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.800746, lng: -40.4796 })  // center of the world map
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState("cases")
 
 
   // useEffect : componentDidMount / when app.js loaded, render it once
@@ -95,20 +96,25 @@ function App() {
 
       <div className="app__stats">
         <InfoBox
+        active={casesType === "cases"}
+        onClick={e => setCasesType('cases')}
           title="Coronavirus Cases"
           cases={prettyPrintStat(countryInfo.todayCases)}
           total={prettyPrintStat(countryInfo.cases)} />
         <InfoBox
+        onClick={e => setCasesType('recovered')}
           title="Recovered"
           cases={prettyPrintStat(countryInfo.todayRecovered)}
           total={prettyPrintStat(countryInfo.recovered)}/>
         <InfoBox
+        onClick={e => setCasesType('deaths')}
           title="Deaths"
           cases={prettyPrintStat(countryInfo.todayDeaths)}
           total={prettyPrintStat(countryInfo.deaths)}/>
       </div>
 
          <Map
+         casesType={casesType}
           countries={mapCountries}
           center={mapCenter}
           zoom={mapZoom}/>
@@ -120,9 +126,9 @@ function App() {
           <h3>Live Cases by Country</h3>
             {/* Table */}
           <Table countries={tableData}/>
-          <h3>Worldwide new cases</h3>
+            <h3>Worldwide new {casesType}</h3>
            {/* Graph */}
-          <LineGraph />
+          <LineGraph casesType={casesType}/>
 
         </CardContent>
       </Card>
