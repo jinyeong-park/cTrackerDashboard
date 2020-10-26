@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
-import './Map.css';
+import './styles/Map.css';
 
 function Map({center, zoom}) {
 
