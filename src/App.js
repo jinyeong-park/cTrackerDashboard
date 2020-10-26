@@ -81,9 +81,9 @@ function App() {
 
         {/* Header */}
       <div className="app__header">
-        <h1> Covid Tracker Dashboard</h1>
+        <h1 className="title"> Coronavirus Tracker Dashboard</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value={country} onChange={onCountryChange}>
+          <Select className='selected' variant="outlined" value={country} onChange={onCountryChange}>
             <MenuItem value="worldwide">Worldwide</MenuItem>
             { countries.map((country) => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
@@ -97,15 +97,15 @@ function App() {
         <InfoBox
           title="Coronavirus Cases"
           cases={prettyPrintStat(countryInfo.todayCases)}
-          total={countryInfo.cases} />
+          total={prettyPrintStat(countryInfo.cases)} />
         <InfoBox
           title="Recovered"
           cases={prettyPrintStat(countryInfo.todayRecovered)}
-          total={countryInfo.recovered}/>
+          total={prettyPrintStat(countryInfo.recovered)}/>
         <InfoBox
           title="Deaths"
           cases={prettyPrintStat(countryInfo.todayDeaths)}
-          total={countryInfo.deaths}/>
+          total={prettyPrintStat(countryInfo.deaths)}/>
       </div>
 
          <Map

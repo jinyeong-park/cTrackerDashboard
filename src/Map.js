@@ -7,7 +7,6 @@ function Map({ countries, casesType, center, zoom}) {
 
   return (
     <div className="map">
-      <h1>Map component</h1>
       <LeafletMap center={center} zoom={zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

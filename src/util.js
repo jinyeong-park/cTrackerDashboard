@@ -20,9 +20,9 @@ export const sortData = (data) => {
 
 const casesTypeColors = {
   cases: {
-    hex: "#CC1034",
-    rgb: "rgb(204, 16, 52)",
-    half_op: "rgba(204, 16, 52, 0.5)",
+    hex: "#f8990b",
+    rgb: "rgb(248, 153, 11)",
+    half_op: "rgba(248, 153, 11, 1)",
     multiplier: 800,
   },
   recovered: {
@@ -35,6 +35,9 @@ const casesTypeColors = {
     hex: "#fb4443",
     rgb: "rgb(251, 68, 67)",
     half_op: "rgba(251, 68, 67, 0.5)",
+    // hex: "#CC1034",
+    // rgb: "rgb(204, 16, 52)",
+    // half_op: "rgba(204, 16, 52, 0.5)",
     multiplier: 2000,
   },
 };

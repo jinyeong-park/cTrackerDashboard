@@ -2,6 +2,10 @@
   flex: 1;
 }
 
+.infobox-container {
+  background-color: rgb(235, 231, 231);
+}
+
 .infoBox:not(:last-child) {
   margin-right: 10px;
 }
