@@ -6,12 +6,16 @@ import Map from './Map.js';
 import Table from './Table.js';
 import { sortData } from "./util";
 import LineGraph from './LineGraph.js';
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.800746, lng: -40.4796 })  // center of the world map pacific ocean
+  const [mapZoom, setMapZoom] = useState(3);
+
 
 
   // STATE = how to write a variable in react
@@ -72,8 +76,7 @@ function App() {
 
         {/* Header */}
       <div className="app__header">
-          {/* Title */}
-        <h1> Covid tracker dashboard</h1>
+        <h1> Covid Tracker Dashboard</h1>
         <FormControl className="app__dropdown">
           <Select variant="outlined" value={country} onChange={onCountryChange}>
             <MenuItem value="worldwide">Worldwide</MenuItem>
@@ -85,16 +88,23 @@ function App() {
       </div>
 
       <div className="app__stats">
-        <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
-        <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>
-        <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
-        {/* InfoBox title="Coronavirus cases*/}
-        {/* InfoBox title="Coronavirus recoveries*/}
-        {/* InfoBox */}
+        <InfoBox
+          title="Coronavirus Cases"
+          cases={countryInfo.todayCases}
+          total={countryInfo.cases} />
+        <InfoBox
+          title="Recovered"
+          cases={countryInfo.todayRecovered}
+          total={countryInfo.recovered}/>
+        <InfoBox
+          title="Deaths"
+          cases={countryInfo.todayDeatths}
+          total={countryInfo.deaths}/>
       </div>
 
-      {/* Map */}
-         <Map />
+         <Map
+          center={mapCenter}
+          zoom={mapZoom}/>
       </div>
 
       {/* // Big Right Container */}

@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Map as LeafletMap, TileLayer } from 'react-leaflet';
+import './Map.css';
 
-function Map() {
+function Map({center, zoom}) {
 
   return (
     <div className="map">
       <h1>Map component</h1>
+      <LeafletMap center={center} zoom={zoom}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&cppy; <a hrref="http://osm/org/copyright">
+          OpenStreettMap</a> contributors'
+        />
+      </LeafletMap>
     </div>
 
   );
