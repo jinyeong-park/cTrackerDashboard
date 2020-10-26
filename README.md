@@ -1,6 +1,6 @@
 # cTrackerDashboard
 
-![cTrackerDashboard](./corona virus tracker.png)
+![cTrackerDashboard](/corona_virus_tracker.png)
 
 
 ## Features
