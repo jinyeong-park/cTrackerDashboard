@@ -3,7 +3,8 @@
 }
 
 .infobox-container {
-  background-color: rgb(235, 231, 231);
+  background-color: white;
+  /* background-color: rgb(235, 231, 231); */
 }
 
 .infoBox:not(:last-child) {
@@ -11,15 +12,15 @@
 }
 
 .infoBox--selected {
-  border-top: 10px solid greenyellow;
+  border-top: 10px solid #5971db;
 }
 
 .infoBox--red {
   border-color: red;
 }
 
-.infoBox__cases--green {
-  color: lightgreen !important;
+.infoBox__cases--blue {
+  color: #5971db !important;
 }
 
 .infoBox__cases {

@@ -18,6 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -41,9 +42,27 @@ h1 {
 .app__stats {
   display: flex;  /* make it horizontal */
   justify-content: space-between;
+
 }
 
+.app__right {
+  display: flex;  /* make it horizontal */
+  flex-direction: column;
+}
 
+.app__right .MuiCardContent-root {
+  display: flex;  /* make it horizontal */
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app__graph {
+  flex-grow: 1
+}
+
+.app__graphTitle {
+  margin-top: 20px;
+}
 
 /* responsive */
 @media (max-width: 990px) {
